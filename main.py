@@ -8,8 +8,17 @@ def main():
     for word in words:
         insert_char_count_into_map(char_map, word)
 
-    print(f'The book has {word_count} words')
-    print(char_map)
+    char_map = dict(sorted(char_map.items()))
+
+    report_list = []
+    for char_key, char_count in char_map.items():
+        if char_key.isalpha():
+            report_list.append(f'The character {char_key} appears {char_count} times')
+
+    print(f'The book has {word_count} words\n')
+
+    for item in report_list:
+        print(f'{item}')
 
 
 def get_book_text(path):
